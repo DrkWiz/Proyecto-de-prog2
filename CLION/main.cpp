@@ -1,9 +1,17 @@
 #include "iostream"
+#include "barco.h"
 using namespace std;
 
 int main(){
+    barco b(4);
+    coordenada test(0,0);
+    b.setBarco(test, 3);
 
-    cout<<"Hello world!"<<endl;
+    for(int i = 0; i < 4; i++)
+    {
+        cout<<b.getX(i)<<", "<<b.getY(i)<<endl;
+    }
+
 
     return 0;
 }
