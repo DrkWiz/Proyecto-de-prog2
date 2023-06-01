@@ -6,10 +6,7 @@ using namespace std;
 int main(){
 
     tablero t(3);
-
-    t.setTablero();
-    casilla a = t.getCasilla(1, 1);
-    cout<<a.getY()<<", "<<a.getX()<<endl;
+    t.llenarVector();
 
     t.mostrar();
 
