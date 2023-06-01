@@ -35,10 +35,12 @@ void barco::setBarco(coordenada x, short rot) {
 
 void barco::setXY(coordenada x) {
     posicion.emplace_back(x.getX(),x.getY());
+    damaged.emplace_back(0);
 }
 
 void barco::setXY(short _x, short _y) {
     posicion.emplace_back(_x, _y);
+    damaged.emplace_back(0);
 }
 
 coordenada barco::getXY(short pos) {
@@ -51,6 +53,14 @@ short barco::getX(short pos) {
 
 short barco::getY(short pos) {
     return posicion[pos].getY();
+}
+
+void barco::setEstado(bool _estado, short pos) {
+    damaged[pos] = _estado;
+}
+
+bool barco::getEstado(short pos) {
+    return damaged[pos];
 }
 
 

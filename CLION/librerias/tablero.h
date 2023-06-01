@@ -1,6 +1,7 @@
 #ifndef TABLERO_H
 #define TABLERO_H
 
+
 class tablero{
 private:
     short l;

@@ -4,15 +4,17 @@
 #include "coordenada.h"
 
 class casilla:public coordenada{
+
+    // Casilla hereda de coordenada, por lo tanto tambien tiene los atributos (X, Y)
 private:
-    bool estado;
+    bool estado; // Estado de la casilla, 0 = agua, 1 = barco.
 public:
-    casilla();
+    casilla(); // Constructor basico coor=(0, 0), estado=0
 
-    void setEstado(bool _estado);
-    bool getEstado();
+    void setEstado(bool _estado); // Setea el estado
+    bool getEstado(); // Devuelve el estado
 
-    bool checkearBarco(/*barco*/);
+    bool checkearBarco(/*barco*/); // Revisa si hay un barco en la casilla.
 };
 
 
