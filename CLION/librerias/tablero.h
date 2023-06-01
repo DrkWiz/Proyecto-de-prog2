@@ -1,18 +1,22 @@
 #ifndef TABLERO_H
 #define TABLERO_H
 
+#include <vector>
+#include "casilla.h"
+using namespace std;
 
 /*
-
-
-
+    La idea del tablero es que contenga un vector[Xmax][Ymax] de casillas, ademas
+    de metodos para administrarlas
  */
 
 class tablero{
 private:
-    short l;
-
+    short l; // Valor maximo de las coordenadas (X, Y) del tablero.
+    vector<vector<casilla>> casillas;
 public:
+    tablero();
+
 };
 
 
