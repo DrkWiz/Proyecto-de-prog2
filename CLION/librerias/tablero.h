@@ -2,6 +2,12 @@
 #define TABLERO_H
 
 
+/*
+
+
+
+ */
+
 class tablero{
 private:
     short l;
@@ -38,4 +44,4 @@ public:
                      }
   }
 
- * }*/
+}*/

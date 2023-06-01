@@ -2,6 +2,7 @@
 #define CASILLA_H
 
 #include "coordenada.h"
+#include "barco.h"
 
 class casilla:public coordenada{
 
@@ -14,7 +15,6 @@ public:
     void setEstado(bool _estado); // Setea el estado
     bool getEstado(); // Devuelve el estado
 
-    bool checkearBarco(/*barco*/); // Revisa si hay un barco en la casilla.
 };
 
 

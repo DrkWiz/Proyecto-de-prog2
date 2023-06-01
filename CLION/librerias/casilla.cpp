@@ -12,3 +12,4 @@ void casilla::setEstado(bool _estado) {
 bool casilla::getEstado() {
     return estado;
 }
+

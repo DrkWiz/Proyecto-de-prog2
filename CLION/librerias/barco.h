@@ -14,11 +14,10 @@ private:
     std::vector<coordenada> posicion; // coordenadas del barco
     std::vector<bool> damaged; // estado de cada coordenada, 0 = bien, 1 = dañado
 
+    void setT(short _t); // Setear tamaño
 public:
     barco(short _t); // Constructor
 
-
-    void setT(short _t); // Setear tamaño
     void setXY(coordenada x); // Crea una coordenada al final del vector y setear el estado a 0.
     void setXY(short _x, short _y); // Crear coordenada al final del vector a traves de dos short,
                                     // ademas de setear el estado 0
