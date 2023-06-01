@@ -1,16 +1,17 @@
 #include "iostream"
 #include "barco.h"
+#include "tablero.h"
 using namespace std;
 
 int main(){
-    barco b(4);
-    coordenada test(0,0);
-    b.setBarco(test, 3);
 
-    for(int i = 0; i < 4; i++)
-    {
-        cout<<b.getX(i)<<", "<<b.getY(i)<<". Estado = "<<b.getEstado(i)<<endl;
-    }
+    tablero t(3);
+
+    t.setTablero();
+    casilla a = t.getCasilla(1, 1);
+    cout<<a.getY()<<", "<<a.getX()<<endl;
+
+    t.mostrar();
 
 
     return 0;

@@ -2,6 +2,7 @@
 #define TABLERO_H
 
 #include <vector>
+#include <iostream>
 #include "casilla.h"
 using namespace std;
 
@@ -13,10 +14,16 @@ using namespace std;
 class tablero{
 private:
     short l; // Valor maximo de las coordenadas (X, Y) del tablero.
-    vector<vector<casilla>> casillas;
-public:
-    tablero();
+    vector<pair<casilla, casilla>> casillas;
 
+    void setL(short _l); // Setea l
+public:
+    tablero(short _l); // Constructor basico para el tablero
+
+    void setTablero(); // Crea e inicializa todas las casillas del tablero.
+    void mostrar();
+
+    casilla getCasilla(short pos1, short pos2);
 };
 
 
