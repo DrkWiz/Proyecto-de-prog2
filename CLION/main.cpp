@@ -6,10 +6,12 @@ using namespace std;
 int main(){
 
     tablero t(3);
-    t.llenarVector();
+    t.setTablero();
 
-    t.mostrar();
-
+    for(int i = 0; i < 3; i++)
+    {
+        cout<<"("<<t.casillas[i]->getX()<<", "<<t.casillas[i]->getY()<<") "<<endl;
+    }
 
     return 0;
 }

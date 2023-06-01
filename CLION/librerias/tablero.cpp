@@ -9,7 +9,10 @@ void tablero::setL(short _l) {
 
 void tablero::setTablero() {
 
-
+    for(int i = 0; i < l; i++)
+    {
+        casillas.emplace_back(new casilla);
+    }
 
 }
 
