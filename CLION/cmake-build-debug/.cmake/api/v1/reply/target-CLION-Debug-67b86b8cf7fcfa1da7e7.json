@@ -80,7 +80,9 @@
 				4,
 				6,
 				8,
-				9
+				9,
+				12,
+				13
 			]
 		}
 	],
@@ -125,7 +127,9 @@
 				4,
 				6,
 				8,
-				9
+				9,
+				12,
+				13
 			]
 		},
 		{
@@ -135,7 +139,9 @@
 				3,
 				5,
 				7,
-				10
+				10,
+				11,
+				14
 			]
 		}
 	],
@@ -199,6 +205,28 @@
 		{
 			"backtrace" : 1,
 			"path" : "librerias/barco.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "librerias/sistema.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "librerias/sistema.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "librerias/jugador.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "librerias/jugador.h",
 			"sourceGroupIndex" : 2
 		}
 	],

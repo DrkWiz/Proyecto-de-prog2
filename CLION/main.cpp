@@ -1,6 +1,4 @@
-#include "iostream"
-#include "barco.h"
-#include "tablero.h"
+#include "sistema.h"
 using namespace std;
 
 int main(){

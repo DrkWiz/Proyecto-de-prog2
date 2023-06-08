@@ -9,4 +9,4 @@ include_directories(librerias)
 add_executable(CLION
         librerias/librerias.txt
         clion.txt
-        main.cpp librerias/tablero.h librerias/tablero.cpp librerias/coordenada.h librerias/coordenada.cpp librerias/casilla.h librerias/casilla.cpp librerias/barco.cpp librerias/barco.h)
+        main.cpp librerias/tablero.h librerias/tablero.cpp librerias/coordenada.h librerias/coordenada.cpp librerias/casilla.h librerias/casilla.cpp librerias/barco.cpp librerias/barco.h librerias/sistema.h librerias/sistema.cpp librerias/sistema.h librerias/jugador.cpp librerias/jugador.h)

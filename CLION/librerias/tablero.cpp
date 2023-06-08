@@ -9,23 +9,17 @@ tablero::tablero(int _l) {
 void tablero::setTablero() {
 
     columnas.resize(l);
-    for (int i = 0; i < l; i++)
-    {
+
+    for (int i = 0; i < l; i++) {
         tabla.push_back(columnas);
     }
 
     for (int i = 0; i < l; i++) {
 
-     for (int j = 0; j < l; j++)
-     {
-         tabla[i][j].setXY(i,j);
-     }
+        for (int j = 0; j < l; j++) {
+            tabla[i][j].setXY(i, j);
+        }
     }
-
-
-}
-
-void tablero::llenarVector() {
 
 }
 
@@ -43,15 +37,14 @@ void tablero::mostrar() {
 }
 
 casilla tablero::getCasilla(short pos1,short pos2) {
-int i=pos1,j=pos2;
-    return tabla[i][j];
+
+    return tabla[pos1][pos2];
 }
-//
-//tablero::~tablero() {
-//    for(casilla *p : casillas)
-//    {
-//        delete p;
-//    }
-//
-//    casillas.clear();
-//}
+
+tablero::tablero() {
+    l = 1;
+}
+
+void tablero::setL(int _l) {
+    l = _l;
+}

@@ -84,6 +84,20 @@ build CMakeFiles/CLION.dir/librerias/barco.cpp.o: CXX_COMPILER__CLION_Debug /hom
   OBJECT_DIR = CMakeFiles/CLION.dir
   OBJECT_FILE_DIR = CMakeFiles/CLION.dir/librerias
 
+build CMakeFiles/CLION.dir/librerias/sistema.cpp.o: CXX_COMPILER__CLION_Debug /home/nico/OneDrive/Facu/2do$ año/Programacion$ 2/P2$ Proyecto/CLION/librerias/sistema.cpp || cmake_object_order_depends_target_CLION
+  DEP_FILE = CMakeFiles/CLION.dir/librerias/sistema.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I"/home/nico/OneDrive/Facu/2do año/Programacion 2/P2 Proyecto/CLION/." -I"/home/nico/OneDrive/Facu/2do año/Programacion 2/P2 Proyecto/CLION/librerias"
+  OBJECT_DIR = CMakeFiles/CLION.dir
+  OBJECT_FILE_DIR = CMakeFiles/CLION.dir/librerias
+
+build CMakeFiles/CLION.dir/librerias/jugador.cpp.o: CXX_COMPILER__CLION_Debug /home/nico/OneDrive/Facu/2do$ año/Programacion$ 2/P2$ Proyecto/CLION/librerias/jugador.cpp || cmake_object_order_depends_target_CLION
+  DEP_FILE = CMakeFiles/CLION.dir/librerias/jugador.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I"/home/nico/OneDrive/Facu/2do año/Programacion 2/P2 Proyecto/CLION/." -I"/home/nico/OneDrive/Facu/2do año/Programacion 2/P2 Proyecto/CLION/librerias"
+  OBJECT_DIR = CMakeFiles/CLION.dir
+  OBJECT_FILE_DIR = CMakeFiles/CLION.dir/librerias
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target CLION
@@ -92,7 +106,7 @@ build CMakeFiles/CLION.dir/librerias/barco.cpp.o: CXX_COMPILER__CLION_Debug /hom
 #############################################
 # Link the executable CLION
 
-build CLION: CXX_EXECUTABLE_LINKER__CLION_Debug CMakeFiles/CLION.dir/main.cpp.o CMakeFiles/CLION.dir/librerias/tablero.cpp.o CMakeFiles/CLION.dir/librerias/coordenada.cpp.o CMakeFiles/CLION.dir/librerias/casilla.cpp.o CMakeFiles/CLION.dir/librerias/barco.cpp.o
+build CLION: CXX_EXECUTABLE_LINKER__CLION_Debug CMakeFiles/CLION.dir/main.cpp.o CMakeFiles/CLION.dir/librerias/tablero.cpp.o CMakeFiles/CLION.dir/librerias/coordenada.cpp.o CMakeFiles/CLION.dir/librerias/casilla.cpp.o CMakeFiles/CLION.dir/librerias/barco.cpp.o CMakeFiles/CLION.dir/librerias/sistema.cpp.o CMakeFiles/CLION.dir/librerias/jugador.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/CLION.dir
   POST_BUILD = :
