@@ -1,18 +1,27 @@
 #include "tablero.h"
-tablero::tablero(short _l) {
-    setL(l);
-}
 
-void tablero::setL(short _l) {
+tablero::tablero(int _l) {
     l = _l;
 }
 
+
+
 void tablero::setTablero() {
 
-    for(int i = 0; i < l; i++)
+    columnas.resize(l);
+    for (int i = 0; i < l; i++)
     {
-        casillas.emplace_back(new casilla);
+        tabla.push_back(columnas);
     }
+
+    for (int i = 0; i < l; i++) {
+
+     for (int j = 0; j < l; j++)
+     {
+         tabla[i][j].setXY(i,j);
+     }
+    }
+
 
 }
 
@@ -22,26 +31,27 @@ void tablero::llenarVector() {
 
 void tablero::mostrar() {
 
-    for(short i = 0; i < l; i++)
+    for (int i = 0; i < l; i++)
     {
-        for(short j = 0; j < l; j++)
+        for (int j = 0; j < tabla[i].size(); j++)
         {
-            cout<<"( "<<casillas[i][j].getX()<<", "<<casillas[i][j].getY()<<")";
+            cout << "(" << tabla[i][j].getX() << ", " << tabla[i][j].getY() << "); ";
         }
+        cout << endl;
     }
 
 }
 
 casilla tablero::getCasilla(short pos1,short pos2) {
 int i=pos1,j=pos2;
-    return casillas[i][j];
+    return tabla[i][j];
 }
-
-tablero::~tablero() {
-    for(casilla *p : casillas)
-    {
-        delete p;
-    }
-
-    casillas.clear();
-}
+//
+//tablero::~tablero() {
+//    for(casilla *p : casillas)
+//    {
+//        delete p;
+//    }
+//
+//    casillas.clear();
+//}

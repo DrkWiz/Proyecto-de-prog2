@@ -13,20 +13,23 @@ using namespace std;
 
 class tablero{
 private:
-    short l; // Valor maximo de las coordenadas (X, Y) del tablero.
+    int l; // Valor maximo de las coordenadas (X, Y) del tablero.
+    vector<vector<casilla>> tabla;
+    vector<casilla> columnas;
 
-    void setL(short _l); // Setea l
 public:
-    tablero(short _l); // Constructor basico para el tablero
+
+    tablero(int _l); // Constructor basico para el tablero
 
     void setTablero(); // Crea e inicializa todas las casillas del tablero.
     void mostrar();
 
     void llenarVector();
     casilla getCasilla(short pos1, short pos2);
-    vector<casilla*> casillas;
 
-    ~tablero();
+    //vector<casilla*> casillas;
+
+    //~tablero();
 };
 
 #endif

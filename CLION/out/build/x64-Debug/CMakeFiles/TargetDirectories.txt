@@ -1,0 +1,3 @@
+C:/Users/Nico/OneDrive/Facu/2do año/Programacion 2/P2 Proyecto/CLION/out/build/x64-Debug/CMakeFiles/CLION.dir
+C:/Users/Nico/OneDrive/Facu/2do año/Programacion 2/P2 Proyecto/CLION/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Nico/OneDrive/Facu/2do año/Programacion 2/P2 Proyecto/CLION/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
