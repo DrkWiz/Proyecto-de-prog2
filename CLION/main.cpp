@@ -48,8 +48,27 @@ int main(){
 
     sistema s;
     jugador j(9,0);
+    j.ubicarBarcos(0, 0, 0, 0);
     j.ubicarBarcos(1, 3,3,0);
+    j.ubicarBarcos(2, 3, 5, 1);
+    j.ubicarBarcos(3, 1, 8, 0);
     s.graficar(j, 9);
+
+
+    try {
+        int numero;
+
+        std::cout << "Ingresa un número entero: ";
+        std::cin >> numero;
+
+        if (std::cin.fail()) {
+            throw std::runtime_error("Entrada inválida. Debe ser un número entero.");
+        }
+
+        std::cout << "El número ingresado es: " << numero << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
 
     return 0;
 }

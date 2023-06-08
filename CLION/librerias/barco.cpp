@@ -8,7 +8,7 @@ void barco::setT(int _t) {
     t = _t;
 }
 
-void barco::setBarco(coordenada x, short rot) {
+void barco::setBarco(coordenada x, int rot) {
 
     setXY(x);
 
@@ -38,33 +38,38 @@ void barco::setXY(coordenada x) {
     damaged.emplace_back(0);
 }
 
-void barco::setXY(short _x, short _y) {
+void barco::setXY(int _x, int _y) {
     posicion.emplace_back(_x, _y);
     damaged.emplace_back(0);
 }
 
-coordenada barco::getXY(short pos) {
+coordenada barco::getXY(int pos) {
     return posicion[pos];
 }
 
-short barco::getX(short pos) {
-    return posicion[pos].getX();
+int barco::getX(int pos) {
+    int x = posicion[pos].getX();
+    return x;
 }
 
-short barco::getY(short pos) {
+int barco::getY(int pos) {
     return posicion[pos].getY();
 }
 
-void barco::setEstado(bool _estado, short pos) {
+void barco::setEstado(bool _estado, int pos) {
     damaged[pos] = _estado;
 }
 
-bool barco::getEstado(short pos) {
+bool barco::getEstado(int pos) {
     return damaged[pos];
 }
 
 int barco::getT() {
     return t;
+}
+
+int barco::getSize() {
+    return posicion.size();
 }
 
 

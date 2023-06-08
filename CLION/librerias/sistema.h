@@ -17,6 +17,7 @@ public:
     void operator++();
 
     void graficar(jugador j, int l);
+    void Inicio(jugador j1, jugador j2, int l);
 
 };
 
