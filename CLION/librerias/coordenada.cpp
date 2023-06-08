@@ -14,7 +14,7 @@ void coordenada::setX(int _x) {
     x = _x;
 }
 
-void coordenada::setY(short _y) {
+void coordenada::setY(int _y) {
     y = _y;
 }
 

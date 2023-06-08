@@ -3,7 +3,7 @@ using namespace std;
 
 int main(){
 
-    //tablero t(3);
+ /*   //tablero t(3);
     //t.setTablero();
 
     //for(int i = 0; i < 3; i++)
