@@ -36,8 +36,7 @@ void tablero::mostrar() {
 
 }
 
-casilla tablero::getCasilla(short pos1,short pos2) {
-
+casilla tablero::getCasilla(int pos1, int pos2) {
     return tabla[pos1][pos2];
 }
 

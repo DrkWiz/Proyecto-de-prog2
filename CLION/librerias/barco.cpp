@@ -1,10 +1,10 @@
 #include "barco.h"
 
-barco::barco(short _t) {
-    setT(_t);
+barco::barco(int _t) {
+    t = _t;
 }
 
-void barco::setT(short _t) {
+void barco::setT(int _t) {
     t = _t;
 }
 
@@ -61,6 +61,10 @@ void barco::setEstado(bool _estado, short pos) {
 
 bool barco::getEstado(short pos) {
     return damaged[pos];
+}
+
+int barco::getT() {
+    return t;
 }
 
 

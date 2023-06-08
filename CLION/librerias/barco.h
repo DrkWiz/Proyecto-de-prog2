@@ -10,18 +10,19 @@ de cada coordenada, entonces se actualiza el estado si es dañado*/
 
 class barco {
 private:
-    short t; // tamaño
+    int t; // tamaño
     std::vector<coordenada> posicion; // coordenadas del barco
     std::vector<bool> damaged; // estado de cada coordenada, 0 = bien, 1 = dañado
 
-    void setT(short _t); // Setear tamaño
+
 public:
-    barco(short _t); // Constructor
+    barco(int _t); // Constructor
 
     void setXY(coordenada x); // Crea una coordenada al final del vector y setear el estado a 0.
     void setXY(short _x, short _y); // Crear coordenada al final del vector a traves de dos short,
                                     // ademas de setear el estado 0
 
+    void setT(int _t); // Setear tamaño
     // Setea el estado de una casilla, pos hace referencia a la posicion dentro del vector
     void setEstado(bool _estado, short pos);
 
@@ -31,6 +32,7 @@ public:
     short getX(short pos); // Devuelve la coordenada X.
     short getY(short pos); // Devuelve la coordenada Y.
     bool getEstado(short pos); // Devuelve el estado de ese par de coordenadas
+    int getT();
 
     // Construye un barco de tamaño t a partir de la coordenada inicial X y una direccion para armarlo.
     void setBarco(coordenada x, short rot);

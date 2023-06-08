@@ -5,12 +5,12 @@ coordenada::coordenada() {
     setY(0);
 }
 
-coordenada::coordenada(short _x, short _y) {
+coordenada::coordenada(int _x, int _y) {
     setX(_x);
     setY(_y);
 }
 
-void coordenada::setX(short _x) {
+void coordenada::setX(int _x) {
     x = _x;
 }
 
@@ -18,10 +18,10 @@ void coordenada::setY(short _y) {
     y = _y;
 }
 
-short coordenada::getX() {
+int coordenada::getX() {
     return x;
 }
 
-short coordenada::getY() {
+int coordenada::getY() {
     return y;
 }

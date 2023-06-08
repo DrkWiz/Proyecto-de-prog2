@@ -1,4 +1,4 @@
-#include "sistema.h"
+#include "librerias/sistema.h"
 using namespace std;
 
 int main(){
@@ -37,9 +37,19 @@ int main(){
     //    cout << endl;
     //}
 
-    tablero t(8);
-    t.setTablero();
-    t.mostrar();
+    //tablero t(8);
+    //t.setTablero();
+    //t.mostrar();
+
+    //jugador j(3,1);
+    //j.ubicarBarcos(0, 30, 0, 0);
+
+    //cout<<j.getBarco(0).getX(0)<<endl; */
+
+    sistema s;
+    jugador j(9,0);
+    j.ubicarBarcos(1, 3,3,0);
+    s.graficar(j, 9);
 
     return 0;
 }
