@@ -39,7 +39,7 @@ int main(){
     //    cout << endl;
     //}
 
-    tablero t(3);
+    tablero t(8);
     t.setTablero();
     t.mostrar();
 
