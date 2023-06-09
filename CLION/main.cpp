@@ -47,28 +47,48 @@ int main(){
     //cout<<j.getBarco(0).getX(0)<<endl; */
 
     sistema s;
-    jugador j(9,0);
-    j.ubicarBarcos(0, 0, 0, 0);
-    j.ubicarBarcos(1, 3,3,0);
-    j.ubicarBarcos(2, 3, 5, 1);
-    j.ubicarBarcos(3, 1, 8, 0);
-    s.graficar(j, 9);
+    // jugador j(9,0);
+    // j.ubicarBarcos(0, 0, 0, 0);
+    // j.ubicarBarcos(1, 3,3,0);
+    // j.ubicarBarcos(2, 3, 5, 1);
+    // j.ubicarBarcos(3, 1, 8, 0);
+    // s.graficar(j, 9);
 
 
-    try {
-        int numero;
+    int l = 3;
+    bool j = true;
+    int opcion = s.Inicio(l, j);
+    jugador j1(l, true), j2(l, j);
 
-        std::cout << "Ingresa un número entero: ";
-        std::cin >> numero;
+    s.etapaBarcos(l, j1);
 
-        if (std::cin.fail()) {
-            throw std::runtime_error("Entrada inválida. Debe ser un número entero.");
-        }
-
-        std::cout << "El número ingresado es: " << numero << std::endl;
-    } catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+/*
+    while (s.getFuncionando())
+    {
+        s.filtrar(l, j1, j2);
     }
+*/
+
+       /*try{
+            cin>>l;
+            cin>>rot;
+
+            for(int r=0; r < 7; r++)
+            {
+                for(int o = 0; o < j.getBarco(r).getSize(); o++)
+                {
+                   if( xingresa == j.getBarco(r).getX(o) && Yingresado == j.getBarco(r).getY(o))
+                   {
+                       throw
+                   }
+                }
+            }
+            }
+            catch (const exception& e){
+
+            }
+*/
+
 
     return 0;
 }

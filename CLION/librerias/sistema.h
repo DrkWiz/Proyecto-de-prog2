@@ -3,6 +3,7 @@
 #define CLION_SISTEMA_H
 
 #include "jugador.h"
+#include <limits>
 
 using namespace std;
 
@@ -16,8 +17,21 @@ public:
     bool getFuncionando();
     void operator++();
 
+    void limpiar();
     void graficar(jugador j, int l);
-    void Inicio(jugador j1, jugador j2, int l);
+    int Inicio(int &l, bool &j);
+    void filtrar(int l, jugador j1, jugador j2);
+
+    bool coordenadaValida(int x, int y, int l);
+    void corregirCoordenada(int &x, int &y, int rot);
+
+    // Jugador vs Jugador
+    void etapaBarcos(int l, jugador j);
+
+
+    // Jugador vs CPU
+
+
 
 };
 
