@@ -40,3 +40,7 @@ barco jugador::getBarco(int pos) {
 bool jugador::getTipo() {
     return tipo;
 }
+
+void jugador::setBarcoXY(int _x, int _y, int pos) {
+    flota[pos].setXY(_x,_y);
+}

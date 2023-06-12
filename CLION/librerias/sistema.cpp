@@ -153,23 +153,31 @@ void sistema::filtrar(int l, jugador j1, jugador j2) {
     }
 }
 
-void sistema::etapaBarcos(int l, jugador j) {
-    graficar(j, l);
+void sistema::etapaBarcos(int l, jugador &j) {
 
-    int x, y;
+    int x, y, rot;
     coordenada X;
+    bool comprobando = true;
 
     cout<<endl;
 
-    do{
-        cout<<"Ingrese la coordenada de la cabeza del barco"<<endl;
-        cout<<"X = ";
-        cin>>x;
-        cout<<"Y = ";
-        cin>>y;
+    for(int i = 0; i < 7; i++) {
+        graficar(j, l);
+        cout<<"Ingrese la coordenada de la cabeza del barco numero "<<i+1<<endl;
+            cout<<"X = ";
+            cin>>x;
+            cout<<"Y = ";
+            cin>>y;
+            cout<<"Ingrese la rotacion del barco (0 = hacia arriba, 1 = hacia la derecha, 2 = hacia abajo, 3 = hacia la izquierda)"<<endl;
+            cin>>rot;
+            if(!validarCoordenada(l,x,y,rot,j.getBarco(i).getSize(),j))
+            {
+                i--;
+            }else{
+                j.setBarcoXY(x,y,i);
+            }
+    }
 
-
-    }while();
 
 
 }
@@ -199,6 +207,66 @@ void sistema::corregirCoordenada(int &x, int &y, int rot) {
         default:
             break;
     }
+
+
+}
+
+bool sistema::validarCoordenada(int l, int x, int y, int rot, int t, jugador j) {
+
+
+    if(!coordenadaValida(x,y,l))
+    {
+        cout<<endl<<"Esta coordenada esta fuera del tablero"<<endl;
+        return false;
+    }
+
+
+    int dx = 0,
+        dy = 0;
+
+    switch (rot) {
+        case 0:
+            dx = 1;
+            break;
+        case 1:
+            dy = 1;
+            break;
+        case 2:
+            dx = -1;
+            break;
+        case 3:
+            dy = -1;
+            break;
+    }
+
+    for(int i = 0; i < t; i++)
+    {
+        int nx = x + i * dx;
+        int ny = y + i * dy;
+
+        if(!coordenadaValida(nx, ny, l))
+        {
+            cout<<endl<<"El barco queda afuera del tablero"<<endl;
+
+            corregirCoordenada(x, y, (rot+2) % 4);
+            return validarCoordenada(l, x, y, rot, t, jugador(0, false));
+        }
+    }
+
+    for(int r=0; r < 7; r++)
+    {
+        for(int o = 0; o < j.getBarco(r).getSize(); o++)
+        {
+            if( x == j.getBarco(r).getX(o) && y == j.getBarco(r).getY(o))
+            {
+                cout<<endl<<"El barco se superpone con otro barco"<<endl;
+                return false;
+            }
+        }
+    }
+
+    return true;
+
 }
 
 

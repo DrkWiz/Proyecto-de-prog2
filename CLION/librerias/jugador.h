@@ -18,6 +18,7 @@ public:
 
     casilla getCasilla(int _x, int _y);
     barco getBarco(int pos);
+    void setBarcoXY(int _x, int _y, int pos);
     bool getTipo();
 };
 
