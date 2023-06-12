@@ -565,7 +565,7 @@ void sistema::condicionVictoria(jugador j1, jugador j2) {
     for(int i=0; i < 7; i++)
     {
         for(int j = 0; j < j1.getBarco(i).getSize(); j++){
-            if(j1,)
+            if(j1.getBarco)
         }
     }
 }
