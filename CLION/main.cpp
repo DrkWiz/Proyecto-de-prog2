@@ -47,18 +47,28 @@ int main(){
     //cout<<j.getBarco(0).getX(0)<<endl; */
 
     sistema s;
-    // jugador j(9,0);
+  /*  // jugador j(9,0);
     // j.ubicarBarcos(0, 0, 0, 0);
     // j.ubicarBarcos(1, 3,3,0);
     // j.ubicarBarcos(2, 3, 5, 1);
     // j.ubicarBarcos(3, 1, 8, 0);
     // s.graficar(j, 9);
+*/
+
+    int l = 9;
+    bool j = false;
+    jugador j1(l, false), j2(l, j);
+
+    s.etapaBarcos(l,j1);
+    s.etapaBarcos(l,j2);
+
+    s.ataque(l,j1,j2);
+
+    s.graficar(j2,l);
+    s.graficaCompleta(j1,j2,l);
 
 
-    int l = 3;
-    bool j = true;
-    int opcion = s.Inicio(l, j);
-    jugador j1(l, true), j2(l, j);
+    /*int opcion = s.Inicio(l, j);
 
     s.etapaBarcos(l, j2);
 */
