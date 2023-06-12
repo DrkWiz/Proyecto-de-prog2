@@ -58,7 +58,7 @@ void jugador::setBarco(int _x, int _y, int rot, int pos) {
                 setBarcoXY(_x, _y + i, pos);
                 break;
             case 2:
-                setBarcoXY(_x - i, _y - i, pos);
+                setBarcoXY(_x - i, _y, pos);
                 break;
             case 3:
                 setBarcoXY(_x, _y - i, pos);
@@ -67,4 +67,17 @@ void jugador::setBarco(int _x, int _y, int rot, int pos) {
                 break;
         }
     }
+}
+
+int jugador::getAtqSize() {
+    return ataques.size();
+}
+
+coordenada jugador::getAtq(int pos) {
+    return ataques[pos];
+}
+
+void jugador::agregarAtq(int _x, int _y) {
+    coordenada X(_x,_y);
+    ataques.emplace_back(X);
 }

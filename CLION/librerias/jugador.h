@@ -9,13 +9,17 @@ private:
     bool tipo; // 0 = CPU 1 = Persona
     tablero t;
     vector<barco> flota;
-
+    vector<coordenada> ataques;
 public:
     jugador(int _l, bool _tipo);
 
     void ubicarBarcos(int pos, int x, int y, int rot);
     void ubicarBarcos(int pos, coordenada x, int rot);
 
+
+    void agregarAtq(int _x, int _y);
+    coordenada getAtq(int pos);
+    int getAtqSize();
     casilla getCasilla(int _x, int _y);
     barco getBarco(int pos);
     void setBarcoXY(int _x, int _y, int pos);

@@ -60,7 +60,8 @@ int main(){
     int opcion = s.Inicio(l, j);
     jugador j1(l, true), j2(l, j);
 
-    s.etapaBarcos(l, j1);
+    s.etapaBarcos(l, j2);
+*/
 
 /*
     while (s.getFuncionando())

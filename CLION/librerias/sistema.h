@@ -11,6 +11,7 @@ class sistema {
 private:
     bool funcionando;
     bool turno;
+    bool barcos;
 public:
     sistema();
 
@@ -19,6 +20,8 @@ public:
 
     void limpiar();
     void graficar(jugador j, int l);
+    void graficaCompleta(jugador j1, jugador j2, int l);
+
     int Inicio(int &l, bool &j);
     void filtrar(int l, jugador j1, jugador j2);
 
@@ -27,9 +30,16 @@ public:
     bool coordenadaValida(int x, int y, int l);
     void corregirCoordenada(int &x, int &y, int rot);
     bool validarCoordenada(int l, int x, int y, int rot, int t, jugador j);
-    // Jugador vs Jugador
+
+    bool validarAtaque(int l, int x, int y, jugador j);
+    void actualizarBarcos(jugador atacante, jugador atacado);
+
     void etapaBarcos(int l, jugador &j);
 
+    void condicionVictoria(jugador j1, jugador j2);
+
+    // Jugador vs Jugador
+    void ataque(int l, jugador &j1, jugador &j2);
 
     // Jugador vs CPU
 
