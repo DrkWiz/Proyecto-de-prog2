@@ -59,14 +59,27 @@ int main(){
     bool j = false;
     jugador j1(l, false), j2(l, j);
 
+    s.etapaBarcos(l,j2);
     s.etapaBarcos(l,j1);
+
+    j2.agregarAtq(j1.getBarco(0).getX(0), j1.getBarco(0).getY(0));
+    j1.agregarAtq(j2.getBarco(0).getX(0), j2.getBarco(0).getY(0));
+
+    s.actualizarBarcos(j1,j2);
+    s.actualizarBarcos(j2,j1);
+
+    s.graficaCompleta(j2,j1,l);
+
+
+
+/*    s.etapaBarcos(l,j1);
     s.etapaBarcos(l,j2);
 
     s.ataque(l,j1,j2);
 
     s.graficar(j2,l);
     s.graficaCompleta(j1,j2,l);
-
+*/
 
     /*int opcion = s.Inicio(l, j);
 
@@ -77,7 +90,7 @@ int main(){
     while (s.getFuncionando())
     {
         s.filtrar(l, j1, j2);
-    }
+    }-
 */
 
        /*try{

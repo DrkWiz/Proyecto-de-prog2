@@ -81,3 +81,7 @@ void jugador::agregarAtq(int _x, int _y) {
     coordenada X(_x,_y);
     ataques.emplace_back(X);
 }
+
+void jugador::setBarcoEstado(bool _e, int posF, int posB) {
+    flota[posF].setEstado(_e, posB);
+}

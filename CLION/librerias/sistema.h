@@ -32,7 +32,7 @@ public:
     bool validarCoordenada(int l, int x, int y, int rot, int t, jugador j);
 
     bool validarAtaque(int l, int x, int y, jugador j);
-    void actualizarBarcos(jugador atacante, jugador atacado);
+    void actualizarBarcos(jugador &atacante, jugador &atacado);
 
     void etapaBarcos(int l, jugador &j);
 

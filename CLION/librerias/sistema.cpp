@@ -437,22 +437,39 @@ void sistema::graficaCompleta(jugador j1, jugador j2, int l) {
                     if(k==j1.getBarco(r).getX(o) && i==j1.getBarco(r).getY(o) && !j1.getBarco(r).getEstado(o)){
                         cout <<"\033[35m" << "0  " << "\033[0m";
                         imprimir = true;
-                    }else if(!imprimir && k ==j1.getBarco(r).getX(o) && i==j1.getBarco(r).getY(o && j1.getBarco(r).getEstado(o))){
-                        cout <<"\033[31m" << "0  " << "\033[0m";
-                        imprimir = true;
                     }
+
                 }
             }
 
-            for(int r = 0; r < j2.getAtqSize(); r++)
+            for(int r=0; r < 7 && k >= 0 && i >= 0; r++)
             {
-                for(int o = 0; o < j1.getBarco(r).getSize(); o++){
-                    if(j2.getAtq(r).getX() == k && j2.getAtq(r).getY() == i && !(k==j1.getBarco(r).getX(o) && i==j1.getBarco(r).getY(o)))
-                    {
-                        cout<<"\033[34m" << "X  " <<"\033[0m";
+                for(int o = 0; o < j1.getBarco(r).getSize(); o++)
+                {
+                    if(k ==j1.getBarco(r).getX(o) && i==j1.getBarco(r).getY(o) && j1.getBarco(r).getEstado(o)){
+                        cout <<"\033[31m" << "0  " << "\033[0m";
                         imprimir = true;
                     }
+
                 }
+            }
+
+
+
+
+            for(int r = 0; r < j2.getAtqSize(); r++)
+            {
+                for(int p = 0; p < 7; p++)
+                {
+                    for(int o = 0; o < j1.getBarco(p).getSize(); o++){
+                        if(!imprimir && j2.getAtq(r).getX() == k && j2.getAtq(r).getY() == i && !(k==j1.getBarco(p).getX(o) && i==j1.getBarco(p).getY(o)))
+                        {
+                            cout<<"\033[34m" << "X  " <<"\033[0m";
+                            imprimir = true;
+                        }
+                    }
+                }
+
             }
 
             if(i == -1 && k > -1){
@@ -545,16 +562,17 @@ bool sistema::validarAtaque(int l, int x, int y, jugador j) {
     return true;
 }
 
-void sistema::actualizarBarcos(jugador atacante, jugador atacado) {
-    for(int i = 0; i < 7; i++)
+void sistema::actualizarBarcos(jugador &atacante, jugador &atacado) {
+    for(int i = 0; i < atacante.getAtqSize(); i++)
     {
-        for(int j = 0; j < atacante.getAtqSize(); j++)
+        for(int j = 0; j < 7; j++)
         {
-            for(int k = 0; k < atacado.getBarco(i).getSize(); k++)
+            for(int k = 0; k < atacado.getBarco(j).getSize(); k++)
             {
-                if(atacante.getAtq(j).getX() == atacado.getBarco(i).getX(k) && atacante.getAtq(j).getY() == atacado.getBarco(i).getY(k))
+                if(atacante.getAtq(i).getX() == atacado.getBarco(j).getX(k)
+                 && atacante.getAtq(i).getY() == atacado.getBarco(j).getY(k))
                 {
-                    atacado.getBarco(i).setEstado(true, k);
+                    atacado.setBarcoEstado(1,j,k);
                 }
             }
         }
@@ -562,12 +580,12 @@ void sistema::actualizarBarcos(jugador atacante, jugador atacado) {
 }
 
 void sistema::condicionVictoria(jugador j1, jugador j2) {
-    for(int i=0; i < 7; i++)
+   /* for(int i=0; i < 7; i++)
     {
         for(int j = 0; j < j1.getBarco(i).getSize(); j++){
             if(j1.getBarco)
         }
-    }
+    }*/
 }
 
 

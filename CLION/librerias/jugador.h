@@ -22,9 +22,13 @@ public:
     int getAtqSize();
     casilla getCasilla(int _x, int _y);
     barco getBarco(int pos);
+
     void setBarcoXY(int _x, int _y, int pos);
     bool getTipo();
     void setBarco(int _x, int _y,int rot, int pos);
+    void setBarcoEstado(bool _e, int posF, int posB);
+
+
 };
 
 
