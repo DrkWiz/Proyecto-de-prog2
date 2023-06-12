@@ -1,5 +1,5 @@
 #include "sistema.h"
-
+#include <cstdlib>
 void sistema::operator++() {
     if(!turno)
     {
@@ -163,18 +163,25 @@ void sistema::etapaBarcos(int l, jugador &j) {
 
     for(int i = 0; i < 7; i++) {
         graficar(j, l);
-        cout<<"Ingrese la coordenada de la cabeza del barco numero "<<i+1<<endl;
+        try{
+            cout<<"Ingrese la coordenada de la cabeza del barco numero "<<i+1<<endl;
             cout<<"X = ";
             cin>>x;
             cout<<"Y = ";
             cin>>y;
             cout<<"Ingrese la rotacion del barco (0 = hacia arriba, 1 = hacia la derecha, 2 = hacia abajo, 3 = hacia la izquierda)"<<endl;
             cin>>rot;
-            if(!validarCoordenada(l,x,y,rot,j.getBarco(i).getSize(),j))
+        }
+        catch (const exception &e)
+        {
+
+        }
+
+            if(!validarCoordenada(l,x,y,rot,j.getBarco(i).getT(),j))
             {
                 i--;
             }else{
-                j.setBarcoXY(x,y,i);
+                j.setBarco(x,y,rot,i);
             }
     }
 
@@ -217,6 +224,7 @@ bool sistema::validarCoordenada(int l, int x, int y, int rot, int t, jugador j) 
     if(!coordenadaValida(x,y,l))
     {
         cout<<endl<<"Esta coordenada esta fuera del tablero"<<endl;
+        ingreseParaContinuar();
         return false;
     }
 
@@ -247,9 +255,10 @@ bool sistema::validarCoordenada(int l, int x, int y, int rot, int t, jugador j) 
         if(!coordenadaValida(nx, ny, l))
         {
             cout<<endl<<"El barco queda afuera del tablero"<<endl;
-
-            corregirCoordenada(x, y, (rot+2) % 4);
-            return validarCoordenada(l, x, y, rot, t, jugador(0, false));
+            ingreseParaContinuar();
+            //corregirCoordenada(x, y, (rot+2) % 4);
+            //return validarCoordenada(l, x, y, rot, t, jugador(0, false));
+            return false;
         }
     }
 
@@ -260,12 +269,21 @@ bool sistema::validarCoordenada(int l, int x, int y, int rot, int t, jugador j) 
             if( x == j.getBarco(r).getX(o) && y == j.getBarco(r).getY(o))
             {
                 cout<<endl<<"El barco se superpone con otro barco"<<endl;
+                ingreseParaContinuar();
                 return false;
             }
         }
     }
 
     return true;
+
+}
+
+void sistema::ingreseParaContinuar() {
+    cout<<endl<<"Ingrese una tecla para continuar"<<endl;
+    cin.get();
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 }
 

@@ -22,6 +22,8 @@ public:
     int Inicio(int &l, bool &j);
     void filtrar(int l, jugador j1, jugador j2);
 
+    void ingreseParaContinuar();
+
     bool coordenadaValida(int x, int y, int l);
     void corregirCoordenada(int &x, int &y, int rot);
     bool validarCoordenada(int l, int x, int y, int rot, int t, jugador j);

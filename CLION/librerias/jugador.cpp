@@ -44,3 +44,27 @@ bool jugador::getTipo() {
 void jugador::setBarcoXY(int _x, int _y, int pos) {
     flota[pos].setXY(_x,_y);
 }
+
+void jugador::setBarco(int _x, int _y, int rot, int pos) {
+    setBarcoXY(_x,_y, pos);
+
+    for(int i = 1; i < flota[pos].getT(); i++)
+    {
+        switch (rot) {
+            case 0:
+                setBarcoXY(_x + i, _y, pos);
+                break;
+            case 1:
+                setBarcoXY(_x, _y + i, pos);
+                break;
+            case 2:
+                setBarcoXY(_x - i, _y - i, pos);
+                break;
+            case 3:
+                setBarcoXY(_x, _y - i, pos);
+                break;
+            default:
+                break;
+        }
+    }
+}

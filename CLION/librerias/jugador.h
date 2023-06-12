@@ -20,6 +20,7 @@ public:
     barco getBarco(int pos);
     void setBarcoXY(int _x, int _y, int pos);
     bool getTipo();
+    void setBarco(int _x, int _y,int rot, int pos);
 };
 
 
