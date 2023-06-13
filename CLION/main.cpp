@@ -54,22 +54,18 @@ int main(){
     // j.ubicarBarcos(3, 1, 8, 0);
     // s.graficar(j, 9);
 */
-
+    bool j = true;
     int l = 9;
-    bool j = false;
-    jugador j1(l, false), j2(l, j);
 
-    s.etapaBarcos(l,j2);
-    s.etapaBarcos(l,j1);
+    s.Inicio(l,j);
 
-    j2.agregarAtq(j1.getBarco(0).getX(0), j1.getBarco(0).getY(0));
-    j1.agregarAtq(j2.getBarco(0).getX(0), j2.getBarco(0).getY(0));
+    jugador j1(l, true);
+    jugador j2(l, j);
 
-    s.actualizarBarcos(j1,j2);
-    s.actualizarBarcos(j2,j1);
-
-    s.graficaCompleta(j2,j1,l);
-
+    do {
+        s.filtrar(l,j1,j2);
+        s.condicionVictoria(j1,j2);
+    } while (s.getFuncionando());
 
 
 /*    s.etapaBarcos(l,j1);

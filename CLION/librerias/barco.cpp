@@ -2,10 +2,12 @@
 
 barco::barco(int _t) {
     t = _t;
+    hundido = false;
 }
 
 void barco::setT(int _t) {
     t = _t;
+    hundido = false;
 }
 
 void barco::setBarco(coordenada x, int rot) {
@@ -70,6 +72,14 @@ int barco::getT() {
 
 int barco::getSize() {
     return posicion.size();
+}
+
+void barco::setH(bool _h) {
+    hundido = _h;
+}
+
+bool barco::getH() {
+    return hundido;
 }
 
 

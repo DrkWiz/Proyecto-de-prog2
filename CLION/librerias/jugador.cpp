@@ -85,3 +85,21 @@ void jugador::agregarAtq(int _x, int _y) {
 void jugador::setBarcoEstado(bool _e, int posF, int posB) {
     flota[posF].setEstado(_e, posB);
 }
+
+int jugador::getPosF(int x, int y) {
+    for(int i = 0; i < 7; i++)
+    {
+        for(int j = 0; j < flota[i].getSize(); j++)
+        {
+            if(flota[i].getX(j) == x && flota[i].getY(j) == y)
+            {
+                return i;
+            }
+        }
+    }
+
+}
+
+void jugador::setBarcoH(bool _e, int posF) {
+    flota[posF].setH(_e);
+}

@@ -27,8 +27,9 @@ public:
     bool getTipo();
     void setBarco(int _x, int _y,int rot, int pos);
     void setBarcoEstado(bool _e, int posF, int posB);
+    void setBarcoH(bool _e, int posF);
 
-
+    int getPosF(int x, int y);
 };
 
 

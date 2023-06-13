@@ -13,7 +13,7 @@ private:
     int t; // tamaño
     std::vector<coordenada> posicion; // coordenadas del barco
     std::vector<bool> damaged; // estado de cada coordenada, 0 = bien, 1 = dañado
-
+    bool hundido=false; //false = siguen en pie // true = barko undío
 
 public:
     barco(int _t); // Constructor
@@ -25,8 +25,8 @@ public:
     void setT(int _t); // Setear tamaño
     // Setea el estado de una casilla, pos hace referencia a la posicion dentro del vector
     void setEstado(bool _estado, int pos);
-
-
+    void setH(bool _h);
+    bool getH();
 
     coordenada getXY(int pos); // Devuelve un par de coordenadas, pos es la posicion del dato en el vector
     int getX(int pos); // Devuelve la coordenada X.

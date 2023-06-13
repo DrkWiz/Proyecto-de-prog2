@@ -22,8 +22,8 @@ public:
     void graficar(jugador j, int l);
     void graficaCompleta(jugador j1, jugador j2, int l);
 
-    int Inicio(int &l, bool &j);
-    void filtrar(int l, jugador j1, jugador j2);
+    void Inicio(int &l, bool &j);
+    void filtrar(int l, jugador &j1, jugador &j2);
 
     void ingreseParaContinuar();
 
@@ -33,6 +33,7 @@ public:
 
     bool validarAtaque(int l, int x, int y, jugador j);
     void actualizarBarcos(jugador &atacante, jugador &atacado);
+    bool confirmarHundido(barco b);
 
     void etapaBarcos(int l, jugador &j);
 

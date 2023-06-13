@@ -70,7 +70,7 @@ void sistema::graficar(jugador j, int l) {
 
 
 
-int sistema::Inicio(int &l, bool &j) {
+void sistema::Inicio(int &l, bool &j) {
 
     int opcion;
 
@@ -108,33 +108,6 @@ int sistema::Inicio(int &l, bool &j) {
         }
     } while (opcion > 3 || opcion < 1);
 
-
-
-
-    return opcion;
-
-    switch (opcion) {
-        case 1:
-            std::cout << "Jugador vs Jugador seleccionado." << std::endl;
-
-            break;
-        case 2:
-            std::cout << "Jugador vs Bot seleccionado." << std::endl;
-
-            break;
-        case 3:
-            std::cout << "Editar tamaño del tablero seleccionado." << std::endl;
-
-            break;
-        case 4:
-            std::cout << "Iniciar juego seleccionado." << std::endl;
-
-            break;
-        default:
-            std::cout << "Opción inválida. Por favor, ingrese una opción válida." << std::endl;
-            break;
-    }
-
 }
 
 void sistema::limpiar() {
@@ -145,7 +118,7 @@ void sistema::limpiar() {
     #endif
 }
 
-void sistema::filtrar(int l, jugador j1, jugador j2) {
+void sistema::filtrar(int l, jugador &j1, jugador &j2) {
 
     if(!barcos)
     {
@@ -175,6 +148,34 @@ void sistema::filtrar(int l, jugador j1, jugador j2) {
             barcos = true;
         }
     }else{
+        if(j2.getTipo())
+        {
+            limpiar();
+            graficaCompleta(j1,j2,l);
+            cout<<endl<<"Turno de ataque del J1:"<<endl;
+            ataque(l,j1,j2);
+            graficaCompleta(j1,j2,l);
+            ingreseParaContinuar();
+
+            limpiar();
+            graficaCompleta(j2,j1,l);
+            cout<<endl<<"Turno de ataque del J2:"<<endl;
+            ataque(l,j2,j1);
+            graficaCompleta(j2,j1,l);
+            ingreseParaContinuar();
+
+        }else{
+            limpiar();
+            graficaCompleta(j1,j2,l);
+            cout<<endl<<"Turno de ataque del J1:"<<endl;
+            ataque(l,j1,j2);
+            graficaCompleta(j1,j2,l);
+            ingreseParaContinuar();
+
+            ataque(l,j2,j1);
+            graficar(j2,l);
+        }
+
 
     }
 
@@ -376,42 +377,62 @@ void sistema::ataque(int l, jugador &j1, jugador &j2) {
     bool atacando = true;
     bool error = false;
 
-    do{
-        try{
-            atacando = false;
-            error = false;
-            cout<<"Ingrese la coordenada que desea atacar: "<<endl<<"X = ";
-            cin>>x;
-            cout<<"Y = ";
-            cin>>y;
+    if(j1.getTipo())
+    {
 
-            if(cin.fail())
-            {
-                error = true;
-                throw runtime_error("Entrada invalida, ingrese numeros enteros");
+        do{
+            try{
+                atacando = false;
+                error = false;
+                cout<<"Ingrese la coordenada que desea atacar: "<<endl<<"X = ";
+                cin>>x;
+                cout<<"Y = ";
+                cin>>y;
+
+                if(cin.fail())
+                {
+                    error = true;
+                    throw runtime_error("Entrada invalida, ingrese numeros enteros");
+                }
             }
-        }
-        catch (exception& e)
-        {
-            cout<<"Error: "<<e.what()<<endl;
-            ingreseParaContinuar();
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            atacando = true;
-        }
-
-        if(!error)
-        {
-            if(!validarAtaque(l,x,y,j1))
+            catch (exception& e)
             {
+                cout<<"Error: "<<e.what()<<endl;
+                ingreseParaContinuar();
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 atacando = true;
-            }else{
-                j1.agregarAtq(x,y);
-                actualizarBarcos(j1,j2);
             }
-        }
 
-    }while(atacando);
+            if(!error)
+            {
+                if(!validarAtaque(l,x,y,j1))
+                {
+                    atacando = true;
+                }else{
+                    j1.agregarAtq(x,y);
+                    actualizarBarcos(j1,j2);
+
+                    if(j2.getBarco(j2.getPosF(x,y)).getH())
+                    {
+                        cout<<"Hundiste el barco de "<<j2.getBarco(j2.getPosF(x,y)).getT()<<" casillas!"<<endl;
+                        ingreseParaContinuar();
+                    }
+                }
+            }
+
+        }while(atacando);
+
+    }else{
+        do{
+            x = rand() % l;
+            y = rand() % l;
+        } while (!validarAtaque(l,x,y,j1));
+        j1.agregarAtq(x,y);
+        actualizarBarcos(j1,j2);
+
+    }
+
 }
 
 void sistema::graficaCompleta(jugador j1, jugador j2, int l) {
@@ -544,8 +565,11 @@ void sistema::graficaCompleta(jugador j1, jugador j2, int l) {
 
 bool sistema::validarAtaque(int l, int x, int y, jugador j) {
     if (!coordenadaValida(x, y, l)) {
-        cout<<endl<<"El ataque cae afuera del tablero"<<endl;
-        ingreseParaContinuar();
+        if(j.getTipo())
+        {
+            cout<<endl<<"El ataque cae afuera del tablero"<<endl;
+            ingreseParaContinuar();
+        }
         return false;
     }
 
@@ -553,8 +577,12 @@ bool sistema::validarAtaque(int l, int x, int y, jugador j) {
     {
         if(x == j.getAtq(i).getX() && y == j.getAtq(i).getY())
         {
-            cout<<endl<<"Yatacates en esta casilla"<<endl;
-            ingreseParaContinuar();
+            if(j.getTipo())
+            {
+                cout<<endl<<"Yatacates en esta casilla"<<endl;
+                ingreseParaContinuar();
+            }
+
             return false;
         }
     }
@@ -577,15 +605,57 @@ void sistema::actualizarBarcos(jugador &atacante, jugador &atacado) {
             }
         }
     }
+
+    for (int i=0; i < 7 ; i++){
+        for(int k = 0; k < atacado.getBarco(i).getSize();k++){
+            if(confirmarHundido(atacado.getBarco(i))){
+                atacado.setBarcoH(1,i);
+            }
+        }
+    }
 }
 
 void sistema::condicionVictoria(jugador j1, jugador j2) {
-   /* for(int i=0; i < 7; i++)
+    int puntosJ1 = 0;
+    int puntosJ2 = 0;
+
+    for(int i = 0; i < 7; i++)
     {
-        for(int j = 0; j < j1.getBarco(i).getSize(); j++){
-            if(j1.getBarco)
+        if(j1.getBarco(i).getH())
+        {
+            puntosJ2++;
         }
-    }*/
+        if(j2.getBarco(i).getH())
+        {
+            puntosJ1++;
+        }
+    }
+
+    if(puntosJ1 == 7)
+    {
+        funcionando = false;
+        limpiar();
+        cout<<"El JUGADOR 1 ha ganado!!"<<endl;
+    }else if(puntosJ2 == 7)
+    {
+        funcionando = false;
+        limpiar();
+        cout<<"El JUGADOR 2 ha ganado!!"<<endl;
+    }
+}
+
+bool sistema::confirmarHundido(barco b) {
+
+    for(int i = 0; i < b.getSize(); i++)
+    {
+        if(!b.getEstado(i))
+        {
+            return false;
+        }
+    }
+
+
+    return true;
 }
 
 

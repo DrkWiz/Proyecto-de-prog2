@@ -25,3 +25,11 @@ int coordenada::getX() {
 int coordenada::getY() {
     return y;
 }
+
+bool coordenada::operator==(coordenada Y) {
+    if(x == Y.getX() && y == Y.getY())
+    {
+        return true;
+    }
+    return false;
+}
