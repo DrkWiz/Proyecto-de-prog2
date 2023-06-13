@@ -699,5 +699,3 @@ bool validarCoordenadas(vector<vector<int>>& tablero, int x, int y, int rotacion
 }
  */
 
-
-

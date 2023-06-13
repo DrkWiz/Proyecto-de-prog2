@@ -39,10 +39,10 @@ public:
 
     void condicionVictoria(jugador j1, jugador j2);
 
-    // Jugador vs Jugador
+    // Jugador vs Jugador // Jugador vs CPU
     void ataque(int l, jugador &j1, jugador &j2);
 
-    // Jugador vs CPU
+
 
 
 
