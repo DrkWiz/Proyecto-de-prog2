@@ -389,7 +389,7 @@ void sistema::ataque(int l, jugador &j1, jugador &j2) {
 
                     if(j2.getBarco(j2.getPosF(x,y)).getH())
                     {
-                        cout<<"Hundiste el barco de "<<j2.getBarco(j2.getPosF(x,y)).getT()<<" casillas!"<<endl;
+                        cout<<endl<<"Hundiste el barco de "<<j2.getBarco(j2.getPosF(x,y)).getT()<<" casillas!"<<endl;
                         ingreseParaContinuar();
                     }
                 }
