@@ -1,16 +1,7 @@
 #include "sistema.h"
 #include <cstdlib>
-void sistema::operator++() {
-    if(!turno)
-    {
-        turno = true;
-    }else{
-        turno = false;
-    }
-}
 
 sistema::sistema() {
-    turno = 0;
     funcionando = 1;
     barcos = false;
 }
@@ -54,10 +45,6 @@ void sistema::graficar(jugador j, int l) {
                 cout << i << "  ";
                 imprimir = true;
             }
-            /*if(k == 6 && i == 4){
-                cout<<"\033[35m" << "0  " << "\033[0m";
-                imprimir = true;
-            }*/
             if(!imprimir){
                 cout<<"\033[34m" << "~  " <<"\033[0m";
             }
@@ -150,21 +137,29 @@ void sistema::filtrar(int l, jugador &j1, jugador &j2) {
     }else{
         if(j2.getTipo())
         {
+            // Jugador vs Jugador
+            limpiar();
+            cout<<endl<<"Turno de ataque del J1:"<<endl;
+            ingreseParaContinuar();
+
             limpiar();
             graficaCompleta(j1,j2,l);
-            cout<<endl<<"Turno de ataque del J1:"<<endl;
             ataque(l,j1,j2);
             graficaCompleta(j1,j2,l);
             ingreseParaContinuar();
 
             limpiar();
-            graficaCompleta(j2,j1,l);
             cout<<endl<<"Turno de ataque del J2:"<<endl;
+            ingreseParaContinuar();
+
+            limpiar();
+            graficaCompleta(j2,j1,l);
             ataque(l,j2,j1);
             graficaCompleta(j2,j1,l);
             ingreseParaContinuar();
 
         }else{
+            // Jugador vs CPU
             limpiar();
             graficaCompleta(j1,j2,l);
             cout<<endl<<"Turno de ataque del J1:"<<endl;
@@ -240,7 +235,6 @@ void sistema::etapaBarcos(int l, jugador &j) {
             } while (!validarCoordenada(l,x,y,rot,j.getBarco(i).getT(),j));
 
             j.setBarco(x,y,rot,i);
-            //graficar(j,l);
         }
 
     }
@@ -253,27 +247,6 @@ bool sistema::coordenadaValida(int x, int y, int l) {
         return true;
     }
     return false;
-}
-
-void sistema::corregirCoordenada(int &x, int &y, int rot) {
-    switch (rot) {
-        case 0:
-            x++;
-            break;
-        case 1:
-            y++;
-            break;
-        case 2:
-            x--;
-            break;
-        case 3:
-            y--;
-            break;
-        default:
-            break;
-    }
-
-
 }
 
 bool sistema::validarCoordenada(int l, int x, int y, int rot, int t, jugador j) {
@@ -321,8 +294,6 @@ bool sistema::validarCoordenada(int l, int x, int y, int rot, int t, jugador j) 
                 ingreseParaContinuar();
             }
 
-            //corregirCoordenada(x, y, (rot+2) % 4);
-            //return validarCoordenada(l, x, y, rot, t, jugador(0, false));
             return false;
         }
 
@@ -364,16 +335,19 @@ bool sistema::validarCoordenada(int l, int x, int y, int rot, int t, jugador j) 
 }
 
 void sistema::ingreseParaContinuar() {
+
+    int * a;
+    a = new int;
     cout<<endl<<"Ingrese una tecla para continuar"<<endl;
-    cin.get();
+    cin>>*a;
     cin.clear();
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
+    delete a;
 }
 
 void sistema::ataque(int l, jugador &j1, jugador &j2) {
 
-    int x,y;
+    int x = 0,y = 0;
     bool atacando = true;
     bool error = false;
 
@@ -485,7 +459,7 @@ void sistema::graficaCompleta(jugador j1, jugador j2, int l) {
                     for(int o = 0; o < j1.getBarco(p).getSize(); o++){
                         if(!imprimir && j2.getAtq(r).getX() == k && j2.getAtq(r).getY() == i && !(k==j1.getBarco(p).getX(o) && i==j1.getBarco(p).getY(o)))
                         {
-                            cout<<"\033[34m" << "X  " <<"\033[0m";
+                            cout<<"\033[37m" << "X  " <<"\033[0m";
                             imprimir = true;
                         }
                     }
@@ -501,10 +475,7 @@ void sistema::graficaCompleta(jugador j1, jugador j2, int l) {
                 cout << i << "  ";
                 imprimir = true;
             }
-            /*if(k == 6 && i == 4){
-                cout<<"\033[35m" << "0  " << "\033[0m";
-                imprimir = true;
-            }*/
+
             if(!imprimir){
                 cout<<"\033[34m" << "~  " <<"\033[0m";
             }
@@ -654,48 +625,5 @@ bool sistema::confirmarHundido(barco b) {
         }
     }
 
-
     return true;
 }
-
-
-/*
-
-bool validarCoordenadas(vector<vector<int>>& tablero, int x, int y, int rotacion, int tamaño_barco) {
-    int l = tablero.size();
-    int dx = 0, dy = 0;
-
-    if (rotacion == 0) {
-        dy = -1;
-    } else if (rotacion == 1) {
-        dx = 1;
-    } else if (rotacion == 2) {
-        dy = 1;
-    } else if (rotacion == 3) {
-        dx = -1;
-    }
-
-    // Comprobar si la coordenada inicial está dentro del tablero
-    if (!coordenadaValida(x, y, l)) {
-        cout << "La coordenada inicial está fuera del tablero." << endl;
-        return false;
-    }
-
-    // Comprobar si las coordenadas generadas por el sistema están dentro del tablero
-    for (int i = 0; i < tamaño_barco; i++) {
-        int nx = x + i * dx;
-        int ny = y + i * dy;
-
-        if (!coordenadaValida(nx, ny, l)) {
-            cout << "Las coordenadas generadas están fuera del tablero." << endl;
-
-            // Corregir la coordenada inicial y volver a comprobar
-            corregirCoordenada(x, y, (rotacion + 2) % 4);
-            return validarCoordenadas(tablero, x, y, rotacion, tamaño_barco);
-        }
-    }
-
-    return true;
-}
- */
-

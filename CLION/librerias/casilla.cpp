@@ -22,4 +22,3 @@ void casilla::setXY(short _x, short _y) {
     setX(_x);
     setY(_y);
 }
-

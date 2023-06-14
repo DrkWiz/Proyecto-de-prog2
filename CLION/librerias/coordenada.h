@@ -9,8 +9,7 @@ public:
     coordenada(); // Constructor basico (0, 0)
     coordenada(int _x, int _y); // Constructor basico (x, y)
 
-    bool operator==(coordenada Y);
-
+    bool operator==(coordenada Y); // Sobrecarga para facilitar la comparacion
 
     void setX(int _x); // Setea el valor X
     void setY(int _y); // Setea el valor Y
@@ -18,11 +17,5 @@ public:
     int getX(); // Devuelve el valor de X
     int getY(); // Devuelve el valor de Y
 };
-
-
-
-
-
-
 
 #endif

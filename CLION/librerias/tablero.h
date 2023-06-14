@@ -22,11 +22,11 @@ public:
     tablero();
     tablero(int _l); // Constructor basico para el tablero
 
-    void setL(int _l);
+    void setL(int _l); // Setea el valor de l
     void setTablero(); // Crea e inicializa todas las casillas del tablero.
-    void mostrar();
+    void mostrar(); // Muestra todas las casillas del tablero con sus valores (X, Y)
 
-    casilla getCasilla(int pos1, int pos2);
+    casilla getCasilla(int pos1, int pos2); // Devuelve una casilla
 };
 
 #endif

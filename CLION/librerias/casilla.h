@@ -15,10 +15,9 @@ public:
     void setEstado(bool _estado); // Setea el estado
     bool getEstado(); // Devuelve el estado
 
-    void setXY(coordenada x);
+    void setXY(coordenada x); // Setean el valor de (X, Y)
     void setXY(short _x, short _y);
 };
-
 
 
 #endif
