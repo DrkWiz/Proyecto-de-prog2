@@ -180,16 +180,35 @@ void sistema::etapaBarcos(int l, jugador &j) {
 
     int x, y, rot;
     bool error;
+    string msg;
 
     cout<<endl;
     if(j.getTipo())
     {
         for(int i = 0; i < 7; i++) {
+
+            if( i == 0)
+            {
+                msg = "de una casilla";
+            }
+            if(i == 1 || i == 2)
+            {
+                msg = "de dos casillas";
+            }
+            if(i == 3 || i == 4 || i == 5)
+            {
+                msg = "de tres casillas";
+            }
+            if(i == 6)
+            {
+                msg = "de cuatro casillas";
+            }
+
             limpiar();
             graficar(j, l);
             try{
                 error = false;
-                cout<<"Ingrese la coordenada de la cabeza del barco numero "<<i+1<<endl;
+                cout<<"Ingrese la coordenada de la cabeza del barco "<<msg<<endl;
                 cout<<"X = ";
                 cin>>x;
                 cout<<"Y = ";
@@ -211,6 +230,7 @@ void sistema::etapaBarcos(int l, jugador &j) {
                 x = -1;
                 y = -1;
                 rot = 0;
+                i--;
                 ingreseParaContinuar();
             }
             if(!error)
